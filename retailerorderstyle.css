@@ -1,0 +1,244 @@
+a,
+button,
+input,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  background: none;
+  -webkit-font-smoothing: antialiased;
+  }
+
+menu,
+ol,
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  }
+
+details {
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  }
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+  }
+
+details[open] {
+  background-color: #f9f9f9;
+  }
+
+/* Body */
+body {
+  margin: 0;
+  font-family: "AlumniSans-Regular", sans-serif;
+  margin-top: 250px;
+}
+
+/* Navigation Section */
+/* Navigation Container */
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: absolute; 
+  top: 20px; 
+  left: 20px; 
+  right: 20px; 
+  z-index: 1000; 
+  background-color: #f8f8f8; 
+  padding: 10px; 
+  border-radius: 8px; 
+  font-family: "AlumniSans-Regular", sans-serif;
+  font-size: 20px;
+}
+
+/* Logo */
+.pherm-logo {
+  width: 200px; 
+  height: auto; 
+  margin: 0 auto; 
+}
+/* Dropdown Container */
+.nav-dropdown {
+  position: relative; 
+  flex: 1;
+  text-align: center;
+}
+
+/* Dropdown Toggle (e.g., "Dashboard ▼") */
+.dropdown-toggle {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  align-items: center;
+  gap: 5px; /* Space between text and icon */
+}
+
+/* Dropdown Menu (Hidden by Default) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+  top: 100%; /* Position below the toggle */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  padding: 10px;
+  font-family: "AlumniSans-Regular", sans-serif;
+  cursor: pointer;
+  color: inherit; 
+  text-decoration: none; 
+  display: block; 
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  text-decoration: none;
+}
+
+/* Show Dropdown Menu on Hover */
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* End Navigation Section */
+
+/* Start Table Header and submit button section
+
+/* Table Header Container */
+.table-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 40px;
+}
+
+/* Title Styling */
+.table-header h1 {
+  font-size: 24px; 
+  font-weight: bold; 
+  background-color: #25aae1;
+  color: #fff; 
+  padding: 10px 20px;
+  border-radius: 4px;
+  width: 40%;
+  text-align: center;
+}
+
+/* Create New Order Button */
+.create-order-button {
+  cursor: pointer;
+  background-color: #25aae1; 
+  color: #fff; 
+  border-radius: 4px; 
+  padding: 10px 20px; 
+  font-size: 14px; 
+  border: none;
+  transition: background-color 0.3s ease; 
+}
+
+.create-order-button:hover {
+  background-color: #1c87b3; /* Darker blue on hover */
+}
+
+.create-order-button:active {
+  background-color: #155a7a; /* Even darker blue when clicked */
+}
+
+/* End Table Header Section */
+
+/* Start Table Section */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  background-color:#25aae1;
+  color:#fff;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+details {
+  cursor: pointer;
+}
+
+details summary {
+  font-weight: bold;
+}
+
+/* Finish Header Styling */
+th.finish-header {
+  text-align: center; 
+  padding: 8px; 
+  background-color: #25aae1; 
+  color: #fff; 
+  border-bottom: 1px solid #ddd; 
+  width: auto; 
+}
+
+/* Finish Button Styling */
+.isFinished {
+  cursor: pointer;
+  background-color: #25aae1; 
+  color: #fff; 
+  border-radius: 4px; 
+  width: 80px; 
+  height: 30px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease; 
+  padding: 0; 
+  box-sizing: border-box; 
+  margin: 0 auto; 
+}
+
+/* Hover state */
+.isFinished:hover {
+  background-color: #1c87b3; /* Darker blue on hover */
+}
+
+/* Active/Clicked state */
+.isFinished:active {
+  background-color: #155a7a; /* Even darker blue when clicked */
+}
+
+/* Center the button cell content */
+td.finish-cell {
+  text-align: center; 
+  vertical-align: middle; 
+}
+
+/* End Table Section */

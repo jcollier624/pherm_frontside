@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/supplierliststyle.css" />
+    <title>Supplier List</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Table Section-->
+      <div class="table-container">
+        <!-- Table Title, Search Bar, and Add Supplier Button -->
+        <div class="table-title-container">
+          <!-- Supplier List Title -->
+          <div class="supplier-list">Supplier List</div>
+
+          <!-- Search Bar and Button -->
+          <div class="search-bar-container">
+            <input type="text" class="search-bar" placeholder="Search suppliers..." />
+            <button class="search-button">Search</button>
+          </div>
+
+          <!-- Add Supplier Button -->
+          <button id="add-supplier-btn" class="add-supplier-button">Add Supplier</button>
+        </div>
+
+        <!-- Table Headers -->
+        <div class="table-headers">
+          <div class="supplierID">Supplier ID</div>
+          <div class="supplierName">Supplier Name</div>
+          <div class="ingredientID">Ingredient ID</div>
+          <div class="ingredient">Ingredient</div>
+          <div class="address">Address</div>
+          <div class="email">Email</div>
+          <div class="phonenumber">Phone Number</div>
+          <div class="editbutton">Edit</div>
+        </div>
+
+        <!-- Table Body -->
+        <div id="table-body" class="table-body">
+          <!-- Row 1 -->
+          <div class="table-row-1">
+            <div contenteditable="false" class="suplid1">SPNH001</div>
+            <div contenteditable="false" class="suplName1">Noah's Cans</div>
+            <div contenteditable="false" class="ingrid1">INGR023</div>
+            <div contenteditable="false" class="ingridName1">Can</div>
+            <div contenteditable="false" class="address1">123 Brewery Lane</div>
+            <div contenteditable="false" class="email1">info@ncans.com</div>
+            <div contenteditable="false" class="phonenumber1">584-745-6904</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="table-row-1">
+            <div contenteditable="false" class="suplid2">SDFL023</div>
+            <div contenteditable="false" class="suplName1">Jack's Labels</div>
+            <div contenteditable="false" class="ingrid2">INGR043</div>
+            <div contenteditable="false" class="ingridName2">Label</div>
+            <div contenteditable="false" class="address2">452 Hamilton Drive</div>
+            <div contenteditable="false" class="email2">contact@jlabels.com</div>
+            <div contenteditable="false" class="phonenumber2">215-654-3346</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Section -->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!-- End Navigation Section -->
+    </div>
+
+    <script>
+      document.getElementById("add-supplier-btn").addEventListener("click", function () {
+        const tableBody = document.getElementById("table-body");
+
+        // Create a new row
+        const newRow = document.createElement("div");
+        newRow.classList.add("table-row-1");
+
+        // Add content for the new row (matching existing structure)
+        newRow.innerHTML = `
+          <div contenteditable="false" class="suplid-new"></div>
+          <div contenteditable="false" class="suplName-new"></div>
+          <div contenteditable="false" class="ingrid-new"></div>
+          <div contenteditable="false" class="ingridName-new"></div>
+          <div contenteditable="false" class="address-new"></div>
+          <div contenteditable="false" class="email-new"></div>
+          <div contenteditable="false" class="phonenumber-new"></div>
+          <div><button class="edit-button">Edit</button></div>
+        `;
+
+        // Append the new row to the bottom of the table body
+        tableBody.appendChild(newRow); // This will now work correctly
+      });
+
+      document.addEventListener("click", function (e) {
+        if (e.target && e.target.classList.contains("edit-button")) {
+          const row = e.target.closest(".table-row-1");
+          const cells = row.querySelectorAll("div:not(.edit-button)"); // Exclude edit button
+
+          // Toggle contenteditable attribute
+          cells.forEach((cell) => {
+            cell.contentEditable = cell.contentEditable === "true" ? "false" : "true";
+          });
+
+          // Change the button text between "Edit" and "Save"
+          e.target.textContent = e.target.textContent === "Edit" ? "Save" : "Edit";
+
+          // Change the button color
+          e.target.style.backgroundColor = e.target.textContent === "Save" ? "#28a745" : "#25aae1";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/productionstyle.css" />
+    <title>Production</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Table Section-->
+      <div class="table-container">
+        <!-- Table Title and Sort Button -->
+        <div class="table-title-container">
+          <div class="production-dashboard">Current Production</div>
+          <a href="addnewbatch.html" class="add-batch-button">Add Batch</a> <!-- Add Batch Button -->
+          <div class="sort-by-container">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by">
+              <option value="batchid">Batch ID</option>
+              <option value="beerName">Beer Name</option>
+              <option value="quantityproducing">Quantity Producing</option>
+              <option value="status">Status</option>
+              <option value="dateStarted">Date Started</option>
+              <option value="estFinished">Estimated Finish</option>
+            </select>
+          </div>
+        </div>
+        <!-- Table Headers -->
+        <div class="table-headers">
+          <div class="batchid">Batch ID</div>
+          <div class="beerName">Beer Name</div>
+          <div class="quantityproducing">Quantity Producing</div>
+          <div class="status">Status</div>
+          <div class="dateStarted">Date Started</div>
+          <div class="estFinished">Estimated Finish</div>
+          <div class="finish">Finish</div>
+        </div>
+      
+        <!-- Table Body -->
+        <div class="table-body">
+          <!-- Row 1 -->
+          <div class="table-row-1">
+            <div class="row1id">#SPRK021</div>
+            <div class="row1beer">Sparkle</div>
+            <div class="row1quantity">10 brewer barrels (bbl)</div>
+            <div class="status">In Progress</div> <!-- Status column -->
+            <div class="row1dateStarted">02/15/2025</div>
+            <div class="row1estFinished">03/22/2025</div>
+            <div><button class="isFinished">Finish</button></div> <!-- Finish button -->
+          </div>
+      
+          <!-- Row 2 -->
+          <div class="table-row-2">
+            <div class="row2id">#FORB019</div>
+            <div class="row2beer">Forbin</div>
+            <div class="row2quantity">16 brewer barrels (bbl)</div>
+            <div class="status">In Progress</div> <!-- Status column -->
+            <div class="row2dateStarted">02/07/2025</div>
+            <div class="row2estFinished">03/15/2025</div>
+            <div><button class="isFinished">Finish</button></div> <!-- Finish button -->
+          </div>
+      
+          <!-- Row 3 -->
+          <div class="table-row-3">
+            <div class="row3id">#TBOT011</div>
+            <div class="row3beer">Taboot</div>
+            <div class="row3quantity">10 brewer barrels (bbl)</div>
+            <div class="status">In Progress</div> <!-- Status column -->
+            <div class="row3dateStarted">01/11/2025</div>
+            <div class="row3estFinished">02/13/2025</div>
+            <div><button class="isFinished">Finish</button></div> <!-- Finish button -->
+          </div>
+        </div>
+      </div>
+      <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+      <!--JavaScript-->
+      <script>
+        // Function to sort rows by status
+        function sortTableByStatus() {
+          const tableBody = document.querySelector(".table-body");
+          const rows = Array.from(tableBody.querySelectorAll(".table-row-1, .table-row-2, .table-row-3"));
+
+          // Sort rows: "In Progress" first, then "Finished"
+          rows.sort((rowA, rowB) => {
+            const statusA = rowA.querySelector(".status").textContent.trim();
+            const statusB = rowB.querySelector(".status").textContent.trim();
+
+            if (statusA === "In Progress" && statusB === "Finished") {
+              return -1; // "In Progress" comes before "Finished"
+            } else if (statusA === "Finished" && statusB === "In Progress") {
+              return 1; // "Finished" comes after "In Progress"
+            } else {
+              return 0; // No change in order
+            }
+          });
+
+          // Clear the table body
+          tableBody.innerHTML = "";
+
+          // Append sorted rows back to the table
+          rows.forEach((row) => {
+            tableBody.appendChild(row);
+          });
+        }
+
+        // Call the sorting function when the page loads
+        document.addEventListener("DOMContentLoaded", sortTableByStatus);
+
+        // Call the sorting function whenever the status changes
+        document.addEventListener("click", function (e) {
+          if (e.target && e.target.classList.contains("isFinished")) {
+            const button = e.target;
+            const row = button.closest(".table-row-1, .table-row-2, .table-row-3"); // Handle all rows
+            const statusCell = row.querySelector(".status"); // Find the Status cell in the same row
+
+            // Toggle button text and color
+            if (button.textContent === "Finish") {
+              button.textContent = "Done!";
+              button.style.backgroundColor = "#28a745"; // Green color
+              statusCell.textContent = "Finished"; // Update status to "Finished"
+            } else {
+              button.textContent = "Finish";
+              button.style.backgroundColor = "#25aae1"; // Blue color
+              statusCell.textContent = "In Progress"; // Update status to "In Progress"
+            }
+
+            // Sort the table after updating the status
+            setTimeout(sortTableByStatus, 0);
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

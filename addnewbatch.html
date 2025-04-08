@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/addnewbatchstyle.css" />
+    <title>Add New Batch</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Form Section-->
+      <div class="table-title-container">
+        
+      <!--Form Section-->
+      <div class="table-title-container">
+        <!-- Title -->
+        <div class="add-new-batch">Add New Batch</div>
+
+        <!-- Form and Submit Button -->
+        <div class="form-container">
+          <form>
+            <div class="form-group">
+              <label for="beer">Select Beer</label>
+              <select id="beer" name="beer">
+                <option value="sparkle">Sparkle</option>
+                <option value="forbin">Forbin</option>
+                <option value="taboot">Taboot</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity">Select Quantity (bbls)</label>
+              <input type="text" id="quantity" placeholder="Enter Quantity (bbls)" />
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="batch-date">Estimated Date of Batch Finish</label>
+              <input type="text" id="batch-date" placeholder="MM/DD/YYYY" />
+            </div>
+          </form>
+
+          <a href="production.html" class="submit-button">Submit</a>
+        </div>
+      </div>
+       <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+  </body>
+</html>

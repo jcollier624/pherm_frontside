@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/supplierordersstyle.css" />
+    <title>Supplier Orders</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Table-->
+      <div class="table-header">
+        <h1>Supplier Orders</h1>
+        <a href="createneworder.html">
+          <button class="create-order-button">Create New Order</button>
+        </a>
+      </div>
+      <table>
+        <!--Table Headers-->
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Supplier Name</th>
+            <th>Status</th>
+            <th>Date Ordered</th>
+            <th>Estimated Arrival</th>
+            <th>Order Cost</th>
+            <th>Order Details</th>
+            <th class="edit-header"></th>
+            <th class="finish-header">Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 1 -->
+          <tr>
+            <td>#NOCNO17</td>
+            <td>Noah’s Cans</td>
+            <td>In Progress</td> <!-- Status column -->
+            <td>02 / 15 / 2025</td>
+            <td>02 / 22 / 2025</td>
+            <td>$689.99</td>
+            <td>
+              <details>
+                <summary>Details</summary>
+                <p>100x 12 oz cans<br>50x 16 oz cans</p>
+              </details>
+            </td>
+            <td class="finish-cell"></td>
+            <td><button class="finish-button">Finish</button></td> <!-- Finish button -->
+          </tr>
+          <!-- Row 2 -->
+          <tr>
+            <td>#NOCNO16</td>
+            <td>Noah’s Cans</td>
+            <td>In Progress</td> <!-- Status column -->
+            <td>02 / 15 / 2025</td>
+            <td>02 / 22 / 2025</td>
+            <td>$719.99</td>
+            <td>
+              <details>
+                <summary>Details</summary>
+                <p>Additional information about the order goes here.</p>
+              </details>
+            </td>
+            <td class="finish-cell"></td>
+            <td><button class="finish-button">Finish</button></td> <!-- Finish button -->
+          </tr>
+          <!-- Row 3 -->
+          <tr>
+            <td>#JKLB021</td>
+            <td>Jack's Labels</td>
+            <td>In Progress</td> <!-- Status column -->
+            <td>02 / 15 / 2025</td>
+            <td>02 / 19 / 2025</td>
+            <td>$119.99</td>
+            <td>
+              <details>
+                <summary>Details</summary>
+                <p>Additional information about the order goes here.</p>
+              </details>
+            </td>
+            <td class="finish-cell"></td>
+            <td><button class="finish-button">Finish</button></td> <!-- Finish button -->
+          </tr>
+        </tbody>
+      </table>
+      <!--End Table-->
+      <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+      <!--JavaScript-->
+      <script>
+        // Function to sort rows by status
+        function sortTableByStatus() {
+          const tableBody = document.querySelector("table tbody");
+          const rows = Array.from(tableBody.querySelectorAll("tr"));
+
+          // Sort rows: "In Progress" first, then "Finished"
+          rows.sort((rowA, rowB) => {
+            const statusA = rowA.querySelector("td:nth-child(3)").textContent.trim();
+            const statusB = rowB.querySelector("td:nth-child(3)").textContent.trim();
+
+            if (statusA === "In Progress" && statusB === "Finished") {
+              return -1; // "In Progress" comes before "Finished"
+            } else if (statusA === "Finished" && statusB === "In Progress") {
+              return 1; // "Finished" comes after "In Progress"
+            } else {
+              return 0; // No change in order
+            }
+          });
+
+          // Clear the table body
+          tableBody.innerHTML = "";
+
+          // Append sorted rows back to the table
+          rows.forEach((row) => {
+            tableBody.appendChild(row);
+          });
+        }
+
+        // Call the sorting function when the page loads
+        document.addEventListener("DOMContentLoaded", sortTableByStatus);
+
+        // Call the sorting function whenever the status changes
+        document.addEventListener("click", function (e) {
+          if (e.target && e.target.classList.contains("finish-button")) {
+            const button = e.target;
+            const row = button.closest("tr"); // Find the closest table row
+            const statusCell = row.querySelector("td:nth-child(3)"); // Find the Status cell in the same row
+
+            // Toggle button text and color
+            if (button.textContent === "Finish") {
+              button.textContent = "Done!";
+              button.style.backgroundColor = "#28a745"; // Green color
+              statusCell.textContent = "Finished"; // Update status to "Finished"
+            } else {
+              button.textContent = "Finish";
+              button.style.backgroundColor = "#25aae1"; // Blue color
+              statusCell.textContent = "In Progress"; // Update status to "In Progress"
+            }
+
+            // Sort the table after updating the status
+            setTimeout(sortTableByStatus, 0);
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/loyaltyrewardsdictionarystyle.css" />
+    <title>Loyalty Rewards Dictionary</title>
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!--Table Section-->
+      <div class="table-container">
+        <!-- Table Title and Sort Button -->
+        <div class="table-title-container">
+          <div class="loyalty-rewards-dictionary">Loyalty Rewards Dictionary</div>
+          <div class="sort-by-container">
+            <button id="add-reward-btn" class="add-reward-button">Add Reward</button>
+          </div>
+        </div>
+
+        <!-- Table Headers -->
+        <div class="table-headers">
+          <div>Point Threshold</div>
+          <div>Reward</div>
+          <div>Active</div>
+          <div>Edit</div>
+        </div>
+      
+        <!-- Table Body -->
+        <div class="table-body" id="table-body">
+          <!-- Row 1 -->
+          <div class="table-row-1">
+            <div contenteditable="false">500</div>
+            <div contenteditable="false">20% next purchase up to $50</div>
+            <div><label><input type="checkbox" id="myCheckbox"></label></div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+          
+          <!-- Row 2 -->
+          <div class="table-row-1">
+            <div contenteditable="false">1000</div>
+            <div contenteditable="false">Free 6 pack of any IPA</div>
+            <div><label><input type="checkbox" id="myCheckbox"></label></div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="table-row-1">
+            <div contenteditable="false">2000</div>
+            <div contenteditable="false">Free 12 pack of any beer</div>
+            <div><label><input type="checkbox" id="myCheckbox"></label></div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>  
+        </div>
+        <div class="large-text">Every $1 Spent adds 10 loyalty points. Customer receives email after hitting each reward threshold if active.</div>
+      </div>
+
+        <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+
+      <!--Java Script-->
+      <script>
+        document.getElementById("add-reward-btn").addEventListener("click", function () {
+          const tableBody = document.getElementById("table-body");
+  
+          // Create a new row
+          const newRow = document.createElement("div");
+          newRow.classList.add("table-row-1");
+  
+          // Add content for the new row
+          newRow.innerHTML = `
+            <div contenteditable="false"></div>
+            <div contenteditable="false"></div>
+            <div><label><input type="checkbox"></label></div>
+            <div><button class="edit-button">Edit</button></div>
+          `;
+  
+          // Append the new row to the table body
+          tableBody.appendChild(newRow);
+        });
+
+        // Add event listener for edit buttons to toggle contenteditable
+        document.getElementById("table-body").addEventListener("click", function (e) {
+          if (e.target && e.target.classList.contains("edit-button")) {
+            const row = e.target.closest('.table-row-1');
+            const cells = row.querySelectorAll('div'); // Select editable cells
+
+            // Toggle contenteditable attribute
+            cells.forEach(cell => {
+              const isEditable = cell.isContentEditable;
+              cell.contentEditable = !isEditable; // Toggle edit mode
+            });
+
+            // Change the button text between "Edit" and "Save"
+            e.target.textContent = e.target.textContent === 'Edit' ? 'Save' : 'Edit';
+            // Change the button color
+            if (e.target.textContent === 'Save') {
+              e.target.style.backgroundColor = '#28a745'; // Green for "Save"
+              } else {
+              e.target.style.backgroundColor = '#25aae1'; // Blue for "Edit"
+              }
+          }
+        });
+      </script>
+  </body>
+</html>

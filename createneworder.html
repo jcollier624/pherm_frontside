@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/addnewbatchstyle.css" />
+    <title>Create New Order</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Form Section-->
+      <div class="table-title-container">
+        
+      <!--Form Section-->
+      <div class="table-title-container">
+        <!-- Title -->
+        <div class="add-new-batch">Create New Order</div>
+
+        <!-- Form and Submit Button -->
+        <div class="form-container">
+          <form>
+            <!--Supplier Name Entry-->
+            <div class="form-group">
+              <label for="supplierName">Supplier Name</label>
+              <select id="supplierName" name="supplierName">
+                <option value="jackslabels">Jack's Labels</option>
+                <option value="noahscans">Noah's Cans</option>
+                <option value="grainbyben">Grain By Ben</option>
+              </select>
+            </div>
+            <!--Ingredient Ordered Entry-->
+            <div class="form-group">
+                <label for="ingredient">Ingredient Ordered</label>
+                <select id="ingredient" name="ingredient">
+                  <option value="_12oz cans">12 oz cans</option>
+                  <option value="_16ozcans">16 oz cans</option>
+                  <option value="pilsnermalt">Pilsner Malt</option>
+                </select>
+              </div>
+            <!--Quantity Entry-->
+            <div class="form-group">
+              <label for="quantity">Quantity of Ingredient Ordered</label>
+              <input type="text" id="quantity" placeholder="Enter Quantity" />
+              </select>
+            </div>
+            <!--Arrival Date Entry-->
+            <div class="form-group">
+              <label for="arrival-date">Expected Arrival Date</label>
+              <input type="text" id="arrival-date" placeholder="MM/DD/YYYY" />
+            </div>
+          </form>
+
+          <a href="supplierorders.html" class="submit-button">Submit</a>
+        </div>
+      </div>
+       <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+  </body>
+</html>

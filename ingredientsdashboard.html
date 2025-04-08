@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/ingredientsdashboardstyle.css" />
+    <title>Ingredients Dashboard</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Table Section-->
+      <div class="table-container">
+        <!-- Table Title and Sort Button -->
+        <div class="table-title-container">
+          <div class="ingredients-inventory-dashboard">Ingredients Inventory Dashboard</div>
+          <div class="sort-by-container">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by">
+              <option value="ingredient">Ingredient</option>
+              <option value="ingredienttype">Ingredient Type</option>
+              <option value="currentstocklevel">Current Stock Level</option>
+              <option value="unitofmeasure">Unit of Measure</option>
+              <option value="suppliername">Supplier Name</option>
+              <option value="orderlink">Order Link</option>
+              <option value="edit">Edit</option>
+            </select>
+          </div>
+        </div>
+        <!-- Table Headers -->
+        <div class="table-headers">
+          <div>Ingredient</div>
+          <div>Ingredient Type</div>
+          <div>Current Stock Level</div>
+          <div>Unit of Measure</div>
+          <div>Supplier Name</div>
+          <div>Order Link</div>
+          <div>Edit</div>
+        </div>
+      
+        <!-- Table Body -->
+        <div class="table-body">
+          <!-- Row 1 -->
+          <div class="table-row-1">
+            <div contenteditable="false">12 oz can</div>
+            <div contenteditable="false">Packaging</div>
+            <div contenteditable="false">160</div>
+            <div contenteditable="false">case</div>
+            <div contenteditable="false">Noah's Cans</div>
+            <div contenteditable="false">noahcans.com/orders</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+      
+          <!-- Row 2 -->
+          <div class="table-row-1">
+            <div contenteditable="false">Labels</div>
+            <div contenteditable="false">Packaging</div>
+            <div contenteditable="false">176</div>
+            <div contenteditable="false">case</div>
+            <div contenteditable="false">Jack's Labels</div>
+            <div contenteditable="false">jacklabels.com/orders</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+      
+          <!-- Row 3 -->
+          <div class="table-row-3">
+            <div contenteditable="false">Pilsner Malt</div>
+            <div contenteditable="false">Ingredient</div>
+            <div contenteditable="false">500</div>
+            <div contenteditable="false">lbs</div>
+            <div contenteditable="false">Grain By Ben</div>
+            <div contenteditable="false">grainbyben.com/orders</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-items">
+        <!-- Navigation Section-->
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+      <!--JavaScript-->
+      <script>
+        document.addEventListener("click", function (e) {
+          if (e.target && e.target.classList.contains("edit-button")) {
+            const row = e.target.closest(".table-row-1");
+            const cells = row.querySelectorAll("div:not(:last-child)"); // Exclude the last cell (Edit button)
+
+            // Toggle contenteditable attribute
+            cells.forEach((cell) => {
+              cell.contentEditable = cell.contentEditable === "true" ? "false" : "true";
+            });
+
+            // Change the button text between "Edit" and "Save"
+            e.target.textContent = e.target.textContent === "Edit" ? "Save" : "Edit";
+
+            // Change the button color
+            e.target.style.backgroundColor = e.target.textContent === "Save" ? "#28a745" : "#25aae1";
+          }
+        });
+      </script>
+  </body>
+</html>

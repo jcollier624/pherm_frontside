@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Beer</title>
+    <link rel="stylesheet" href="../static/addnewbeerstyle.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="form-container">
+        <h1>Create Beer</h1>
+        <form id="beer-form">
+            <!-- Beer Details -->
+            <div class="form-group">
+                <label for="beer-name">Beer Name</label>
+                <input type="text" id="beer-name" name="beer-name" placeholder="Enter Beer Name" required>
+            </div>
+            <div class="form-group">
+                <label for="abv">ABV</label>
+                <input type="number" id="abv" name="abv" step="0.1" placeholder="Enter ABV" required>
+            </div>
+            <div class="form-group">
+                <label for="style">Style</label>
+                <input type="text" id="style" name="style" placeholder="Enter Style" required>
+            </div>
+
+            <!-- Ingredients Section -->
+            <div id="ingredients-section">
+                <h2>Recipe</h2>
+                <div class="ingredient-group">
+                    <div class="form-group">
+                        <label for="ingredient-name-1">Ingredient Name</label>
+                        <input type="text" id="ingredient-name-1" name="ingredient-name-1" placeholder="Enter Ingredient Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity-1">Quantity Ordered</label>
+                        <input type="number" id="quantity-1" name="quantity-1" step="0.01" placeholder="Enter Quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="unit-1">Unit of Measure</label>
+                        <input type="text" id="unit-1" name="unit-1" placeholder="Enter Unit of Measure" required>
+                    </div>
+                    <!-- No "Remove Ingredient" button for the first group -->
+                </div>
+            </div>
+
+            <!-- Buttons Container -->
+            <div class="buttons-container">
+                <button type="button" id="add-ingredient-button">Add Next Ingredient</button>
+                <a href="beerlist.html" class="submit-button">Submit</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to dynamically add and remove ingredient fields
+        let ingredientCount = 1;
+
+        document.getElementById('add-ingredient-button').addEventListener('click', function () {
+            ingredientCount++;
+
+            const ingredientsSection = document.getElementById('ingredients-section');
+            const newIngredientGroup = document.createElement('div');
+            newIngredientGroup.classList.add('ingredient-group');
+
+            newIngredientGroup.innerHTML = `
+                <div class="form-group">
+                    <label for="ingredient-name-${ingredientCount}">Ingredient Name</label>
+                    <input type="text" id="ingredient-name-${ingredientCount}" name="ingredient-name-${ingredientCount}" placeholder="Enter Ingredient Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity-${ingredientCount}">Quantity Ordered</label>
+                    <input type="number" id="quantity-${ingredientCount}" name="quantity-${ingredientCount}" step="0.01" placeholder="Enter Quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit-${ingredientCount}">Unit of Measure</label>
+                    <input type="text" id="unit-${ingredientCount}" name="unit-${ingredientCount}" placeholder="Enter Unit of Measure" required>
+                </div>
+                <button type="button" class="remove-ingredient-button">Remove Ingredient</button>
+            `;
+
+            ingredientsSection.appendChild(newIngredientGroup);
+
+            // Add event listener to the new "Remove" button
+            const removeButton = newIngredientGroup.querySelector('.remove-ingredient-button');
+            removeButton.addEventListener('click', function () {
+                ingredientsSection.removeChild(newIngredientGroup);
+            });
+        });
+    </script>
+</body>
+</html>
+       <!-- Navigation Section-->
+      <div class="nav-items">
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+  </body>
+</html>

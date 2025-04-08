@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Add New Retailer Order</title>
+      <link rel="stylesheet" href="indexstyle.css" />
+      <link rel="stylesheet" href="../static/addnewretailorderstyle.css" />
+    </head>    
+  <body>
+
+    <!-- NAVIGATION (move to top like supplierorders) -->
+    <div class="nav-items">
+      <div class="nav-dropdown">
+        <div class="dropdown-toggle">Dashboard ▼</div>
+        <div class="dropdown-menu">
+          <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+          <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="dropdown-toggle">Production ▼</div>
+        <div class="dropdown-menu">
+          <a href="production.html" class="dropdown-item">Production</a>
+          <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+          <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+          <a href="beerlist.html" class="dropdown-item">Beer List</a>
+          <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+          <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+        </div>
+      </div>
+
+      <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+
+      <div class="nav-dropdown">
+        <div class="dropdown-toggle">Retailers ▼</div>
+        <div class="dropdown-menu">
+          <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+          <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="dropdown-toggle">Customers ▼</div>
+        <div class="dropdown-menu">
+          <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+          <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+        </div>
+      </div>
+    </div>
+    <!-- END NAV -->
+
+    <!-- FORM -->
+    <div class="dashboard">
+      <div class="form-header">
+        <h1>Add New Retailer Order</h1>
+      </div>
+
+      <form class="order-form" action="retailerorders.html" method="POST">
+        <div class="form-group">
+          <label for="retailer-id">Retailer ID</label>
+          <input
+            type="text"
+            id="retailer-id"
+            name="retailer-id"
+            placeholder="Enter retailer ID"
+            required
+          />
+        </div>
+      
+        <div class="form-group">
+          <label for="company-name">Company Name</label>
+          <input
+            type="text"
+            id="company-name"
+            name="company-name"
+            placeholder="Enter company name"
+            required
+          />
+        </div>
+      
+        <div class="form-group">
+          <label for="beer">Select Beer Ordered</label>
+          <select id="beer" name="beer" required>
+            <option value="">-- Choose a Beer --</option>
+            <option value="Sparkle">Sparkle</option>
+            <option value="Forbin">Forbin</option>
+            <option value="Taboot">Taboot</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            placeholder="Enter quantity"
+            required
+          />
+        </div>      
+        <!-- ✅ These are your read-only fields -->
+        <div class="form-group">
+          <label for="total-cost">Total Cost ($)</label>
+          <input type="text" id="total-cost" name="total-cost" value="Calculated Total Cost" readonly />
+        </div>
+      
+        <div class="form-group">
+          <label for="delivery-date">Expected Delivery Date</label>
+          <input type="text" id="delivery-date" name="delivery-date" value="Calculated Estimated Delivery" readonly />
+        </div>
+      
+        <button type="submit" class="submit-button">Send Order</button>  
+      </form>
+    </div>
+  </body>
+</html>

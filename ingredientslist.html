@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vars.css" />
+    <link rel="stylesheet" href="../static/ingredientsliststyle.css" />
+    <title>Ingredient List</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!--Table Section-->
+      <div class="table-container">
+        <!-- Table Title, Search Bar, and Add Supplier Button -->
+        <div class="table-title-container">
+          <!-- Supplier List Title -->
+          <div class="supplier-list">Ingredient List</div>
+      
+          <!-- Search Bar and Button -->
+          <div class="search-bar-container">
+            <input type="text" class="search-bar" placeholder="Search ingredients..." />
+            <button class="search-button">Search</button>
+          </div>
+      
+          <!-- Add Supplier Button -->
+          <button id="add-ingredient-btn" class="add-ingredient-button">Add Ingredient</button>
+        </div>
+      </div>
+        <!-- Table Headers -->
+        <div class="table-headers">
+          <div>Ingredient Name</div>
+          <div>Ingredient Type</div>
+          <div>Unit of Measure</div>
+          <div>Ingredient ID</div>
+          <div>Edit</div>
+        </div>
+      
+        <!-- Table Body -->
+        <div id="table-body" class="table-body">
+          <!-- Row 1 -->
+          <div class="table-row-1">
+            <div contenteditable="false"">16 oz Can</div>
+            <div contenteditable="false">Packaging</div>
+            <div contenteditable="false">Case</div>
+            <div contenteditable="false">#442</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+      
+          <!-- Row 2 -->
+          <div class="table-row-1">
+            <div contenteditable="false">12 oz Can</div>
+            <div contenteditable="false">Packaging</div>
+            <div contenteditable="false">Case</div>
+            <div contenteditable="false">#297</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+      
+          <!-- Row 3 -->
+          <div class="table-row-1">
+            <div contenteditable="false">Pilsner Malt</div>
+            <div contenteditable="false">Ingredient</div>
+            <div contenteditable="false">lbs</div>
+            <div contenteditable="false">#127</div>
+            <div><button class="edit-button">Edit</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-items">
+        <!-- Navigation Section-->
+        <!-- Left Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Dashboard ▼</div>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Beer Dashboard</a>
+            <a href="ingredientsdashboard.html" class="dropdown-item">Ingredients Dashboard</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Production ▼</div>
+          <div class="dropdown-menu">
+            <a href="production.html" class="dropdown-item">Production</a>
+            <a href="supplierlist.html" class="dropdown-item">Supplier List</a>
+            <a href="supplierorders.html" class="dropdown-item">Supplier Orders</a>
+            <a href="beerlist.html" class="dropdown-item">Beer List</a>
+            <a href="ingredientslist.html" class="dropdown-item">Ingredients List</a>
+            <a href="recipelist.html" class="dropdown-item">Recipe List</a>
+          </div>
+        </div>
+      
+        <!-- Logo -->
+        <img class="pherm-logo" src="pherm_logo.png" alt="Pherm Logo" />
+      
+        <!-- Right Headers -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Retailers ▼</div>
+          <div class="dropdown-menu">
+            <a href="retailerdashboard.html" class="dropdown-item">Retailer Dashboard</a>
+            <a href="retailerorders.html" class="dropdown-item">Retailer Orders</a>
+          </div>
+        </div>
+      
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle">Customers ▼</div>
+          <div class="dropdown-menu">
+            <a href="customerdashboard.html" class="dropdown-item">Customer Dashboard</a>
+            <a href="loyaltyrewardsdictionary.html" class="dropdown-item">Loyalty Rewards Dictionary</a>
+          </div>
+        </div>
+      </div>
+      <!--End Navigation Section-->
+      <script>
+        document.getElementById("add-ingredient-btn").addEventListener("click", function () {
+          const tableBody = document.getElementById("table-body");
+  
+          // Create a new row
+          const newRow = document.createElement("div");
+          newRow.classList.add("table-row-1");
+  
+          // Add content for the new row (matching existing structure)
+          newRow.innerHTML = `
+            <div contenteditable="false"></div>
+            <div contenteditable="false"></div>
+            <div contenteditable="false"></div>
+            <div contenteditable="false"></div>
+            <div><button class="edit-button">Edit</button></div>
+          `;
+  
+          // Append the new row to the bottom of the table body
+          tableBody.appendChild(newRow); // This will now work correctly
+        });
+  
+        document.addEventListener("click", function (e) {
+          if (e.target && e.target.classList.contains("edit-button")) {
+            const row = e.target.closest(".table-row-1");
+            const cells = row.querySelectorAll("div:not(.edit-button)"); // Exclude edit button
+  
+            // Toggle contenteditable attribute
+            cells.forEach((cell) => {
+              cell.contentEditable = cell.contentEditable === "true" ? "false" : "true";
+            });
+  
+            // Change the button text between "Edit" and "Save"
+            e.target.textContent = e.target.textContent === "Edit" ? "Save" : "Edit";
+  
+            // Change the button color
+            e.target.style.backgroundColor = e.target.textContent === "Save" ? "#28a745" : "#25aae1";
+          }
+        });
+      </script>
+  </body>
+</html>
